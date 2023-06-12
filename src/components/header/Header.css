@@ -1,0 +1,32 @@
+.header{
+    background-color: #1B1C37;
+    padding: 20px 80px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    align-items: center;
+}
+
+.logo__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header__menu__list{
+    list-style: none;
+    display: flex;
+    gap: 80px;
+}
+
+.menu__list__point__link{
+    text-decoration: none;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36px;
+}

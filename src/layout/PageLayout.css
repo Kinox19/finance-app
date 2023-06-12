@@ -1,0 +1,6 @@
+.layout{
+    padding: 60px 100px 0px 100px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 100px;
+}

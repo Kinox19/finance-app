@@ -1,0 +1,59 @@
+.dropdown__container{
+    border: 1px solid #BDBDBD;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+}
+
+.currency__list{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    padding: 0px;
+}
+
+.currency__list-item{
+    padding: 20px;
+    border: 1px solid #BDBDBD;
+    color:#1B1C37;
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 28px;
+    cursor: pointer;
+}
+
+.currency__list-item:first-of-type{
+    border-radius: 12px 0px 0px 12px;
+    -webkit-border-radius: 12px 0px 0px 12px;
+    -moz-border-radius: 12px 0px 0px 12px;
+    -ms-border-radius: 12px 0px 0px 12px;
+    -o-border-radius: 12px 0px 0px 12px;
+}
+
+.currency__point_more{
+    border-radius: 0px 12px 12px 0px;
+    -webkit-border-radius: 0px 12px 12px 0px;
+    -moz-border-radius: 0px 12px 12px 0px;
+    -ms-border-radius: 0px 12px 12px 0px;
+    -o-border-radius: 0px 12px 12px 0px;
+    padding: 24px 32px;
+    cursor: pointer;
+}
+
+.currency{
+    padding: 20px;
+}
+
+.currency__list-item_active{
+    /* background: linear-gradient(90deg, #B224EF 0%, #7579FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+    /* background-clip: text; */
+    /* text-fill-color: transparent; */
+    background-color: #1B1C37;
+    color: #fff;
+}

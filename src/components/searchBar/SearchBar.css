@@ -1,0 +1,33 @@
+.search-bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 2px 4px 8px 0px #7579FF2E;
+    padding: 30px 50px;
+}
+
+.user__name{
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 42px;
+    text-align: left;
+    color: #1B1C37;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.user__greetings-img{
+    max-width: 28px;
+    max-height: 28px;
+}
+
+.date{
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    color: #1B1C37;
+}

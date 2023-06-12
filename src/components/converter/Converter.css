@@ -1,0 +1,44 @@
+.widget__layout{
+    display: flex;
+    flex-direction: column;
+    gap: 27px;
+}
+
+.page__heading{
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 54px;
+    color: #1B1C37;
+}
+
+.converter__background{
+    box-shadow: 0px 4px 8px 0px #29292914;
+    width: 850px;
+    padding: 24px 20px;
+}
+
+.converter__inner{
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.converter__part{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.converter__text{
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 22px;
+    letter-spacing: -0.05em;
+    text-align: left;
+}
+
+.currency__wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}

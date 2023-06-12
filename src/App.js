@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./components/header/Header";
+import PageLayout from "./layout/PageLayout";
+import ConverterPage from "./pages/converterPage/ConverterPage";
+import SearchBar from "./components/searchBar/SearchBar"
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+      <PageLayout>
+        <SearchBar/>
+        <ConverterPage/>
+      </PageLayout>
     </div>
   );
 }
