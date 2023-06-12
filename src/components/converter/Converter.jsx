@@ -1,43 +1,55 @@
 import CurrencyDropDown from '../currencyDropDown/CurrencyDropDown';
 import CurrencyInput from '../currencyInput/CurrencyInput';
 import './Converter.css'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 const Converter = () => {
 
-const [rates, setRates] = useState({});
 
-const [fromCurrency, setFromCurrency] = useState('BYN')
-const [toCurrency, setToCurrency] = useState('RUB')
 
-const [inputedValue, setInputedValue] = useState('1')
+const [fromCurrency, setFromCurrency] = useState('RUB')
+const [toCurrency, setToCurrency] = useState('USD')
 
-const [trasferedValue, setTrasferedValue] = useState('0')
+const [fromValue, setFromValue] = useState(0);
+const [toValue, setToValue] = useState(1);
+
+const ratesRef = useRef({});
 
 useEffect(() => {
   fetch('https://www.cbr-xml-daily.ru/latest.js', {
   })
   .then((res) => res.json())
   .then((json) => {
-    setRates(json.rates);
+    json.rates.RUB = '1';
+    ratesRef.current = json.rates;
   })
   .catch((err) => {
-    console.log(err)
+    console.log(err);
   })
 }, [])
 
-
-function doubleFunc(e){
-  setInputedValue(e.target.value)
-  transfer(inputedValue, fromCurrency, toCurrency)
+const onChangeFromValue = (value) => {
+  const price = value / ratesRef.current[fromCurrency];
+  const result = price * ratesRef.current[toCurrency];
+  setToValue(result.toFixed(3));
+  setFromValue(value);
 }
 
-function transfer(num, from, to){
-  num /= rates[from];
-  console.log(from)
-  setTrasferedValue((num*rates[to])*10)
-  console.log(to)
+const onChangeToValue = (value) => {
+  const result1 = (ratesRef.current[fromCurrency]/ratesRef.current[toCurrency])*value;
+  setFromValue(result1.toFixed(3));
+  console.log(result1)
+  setToValue(value);
 }
+
+useEffect(() => {
+  onChangeFromValue(fromValue);
+}, [fromCurrency]);
+
+
+useEffect(()=>{
+  onChangeToValue(toValue);
+}, [toCurrency])
 
   return (
     <div className='widget__layout'>
@@ -47,15 +59,15 @@ function transfer(num, from, to){
             <div className='converter__part'>
               <p className='converter__text'>I have</p>
               <div className='currency__wrapper'>
-                <CurrencyDropDown currency={fromCurrency} onChangeCurrency={setFromCurrency} />
-                <CurrencyInput value={inputedValue} onChange={(e) => doubleFunc(e)}/>
+                <CurrencyDropDown currency={fromCurrency} onChangeCurrency={setFromCurrency}  />
+                <CurrencyInput value={fromValue} onChangeValue = {onChangeFromValue}/>
               </div>
             </div>
             <div className='converter__part'>
               <p className='converter__text'>I want to buy</p>
               <div className='currency__wrapper'>
                 <CurrencyDropDown currency={toCurrency} onChangeCurrency={setToCurrency} />
-                <CurrencyInput value={trasferedValue}/>
+                <CurrencyInput value={toValue} onChangeValue = {onChangeToValue}/>
               </div>
             </div>
           </div>

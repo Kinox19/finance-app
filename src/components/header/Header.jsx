@@ -5,6 +5,7 @@ import LogoHeader from '../logo/LogoHeader'
 
 import { auth, provider } from '../../config'
 import { signInWithPopup } from 'firebase/auth'
+import ModalSignIn from '../modal/modalSignIn/ModalSignIn'
 
 const links = [
     { id: 'ConvertorPage', label: 'Converter', to: '/converter' },
@@ -14,6 +15,8 @@ const links = [
 
 const Header = () => {
 
+  const [active, setActive] = useState(false)
+
   const [value, setValue] = useState('')
   const [name, setName] = useState('')
   const handleClick = () => {
@@ -22,6 +25,7 @@ const Header = () => {
       setName(data.user.displayName)
       localStorage.setItem('email', data.user.email)
       localStorage.setItem('name', data.user.displayName)
+      setActive(true)
     })
   }
 
@@ -48,8 +52,10 @@ const Header = () => {
             </ul>
         </div>
         {value? <button onClick={logout}>log out</button> : <PrimaryButton onClick={handleClick}>Log in</PrimaryButton>}
-        
+        <PrimaryButton onClick={() => setActive(true)} >PopUp</PrimaryButton>
+        <ModalSignIn active={active} setActive={setActive}/>
     </header>
+
   )
 }
 
