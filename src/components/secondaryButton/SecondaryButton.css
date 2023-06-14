@@ -1,0 +1,19 @@
+.button__secondary{
+    padding: 12px 50px;
+    border-radius: 12px;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    -ms-border-radius: 12px;
+    -o-border-radius: 12px;
+    border: none;
+    background-color: #E9DFFC;
+    color: #784DC7;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 36px;
+    cursor: pointer;
+}
+
+.button__secondary:hover{
+    background-color: #DECFFA;
+}

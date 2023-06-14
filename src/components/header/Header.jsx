@@ -3,9 +3,8 @@ import React, { useEffect, useState } from 'react'
 import PrimaryButton from '../primaryButton/PrimaryButton'
 import LogoHeader from '../logo/LogoHeader'
 
-import { auth, provider } from '../../config'
-import { signInWithPopup } from 'firebase/auth'
 import ModalSignIn from '../modal/modalSignIn/ModalSignIn'
+import SecondaryButton from '../secondaryButton/SecondaryButton'
 
 const links = [
     { id: 'ConvertorPage', label: 'Converter', to: '/converter' },
@@ -19,15 +18,7 @@ const Header = () => {
 
   const [value, setValue] = useState('')
   const [name, setName] = useState('')
-  const handleClick = () => {
-    signInWithPopup(auth, provider).then((data) => {
-      setValue(data.user.email)
-      setName(data.user.displayName)
-      localStorage.setItem('email', data.user.email)
-      localStorage.setItem('name', data.user.displayName)
-      setActive(true)
-    })
-  }
+  const [email, setEmail] = useState('')
 
   const logout = () => {
     localStorage.clear();
@@ -35,7 +26,7 @@ const Header = () => {
   }
 
   useEffect(() => {
-    setValue(localStorage.getItem('email'))
+    setEmail(setValue(localStorage.getItem('email')))
   }, [])
 
 
@@ -51,8 +42,8 @@ const Header = () => {
               ))}
             </ul>
         </div>
-        {value? <button onClick={logout}>log out</button> : <PrimaryButton onClick={handleClick}>Log in</PrimaryButton>}
-        <PrimaryButton onClick={() => setActive(true)} >PopUp</PrimaryButton>
+        {value? <SecondaryButton onClick={logout}>Log out {email}</SecondaryButton> : <PrimaryButton onClick={() => setActive(true)} >Log In</PrimaryButton>}
+        
         <ModalSignIn active={active} setActive={setActive}/>
     </header>
 
